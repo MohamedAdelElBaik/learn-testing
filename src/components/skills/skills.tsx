@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function Skills({ skills }: { skills: string[] }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div>
       <ul>
@@ -6,6 +10,12 @@ export default function Skills({ skills }: { skills: string[] }) {
           <li key={skill + index}>{skill}</li>
         ))}
       </ul>
+
+      {isLoggedIn ? (
+        <button>start learning</button>
+      ) : (
+        <button onClick={() => setIsLoggedIn(true)}>login</button>
+      )}
     </div>
   );
 }
